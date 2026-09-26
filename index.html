@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy 1st Anniversary, Raie! ❤️</title>
+  
+  <!-- Romantic Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Dancing+Script:wght@600;700&family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Font Awesome Icons for Music & Controls -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Floating Particles Canvas (Hearts & Sparkles) -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Ambient Audio Player Element -->
+  <audio id="bg-audio" loop preload="auto">
+    <source src="assets/music/our-song.mp3" type="audio/mpeg">
+    Your browser does not support audio playback.
+  </audio>
+
+  <!-- Floating Music Toggle Controller (Corner Widget) -->
+  <div class="music-controller" id="musicController" title="Toggle Romantic Music">
+    <div class="vinyl-record" id="vinylRecord">
+      <div class="vinyl-grooves"></div>
+      <div class="vinyl-center">
+        <i class="fa-solid fa-heart music-heart"></i>
+      </div>
+    </div>
+    <div class="music-info">
+      <span class="music-title">Apocalypse • Cigarettes After Sex 🎵</span>
+      <span class="music-status" id="musicStatus">Click to play</span>
+    </div>
+    <button class="music-btn" id="musicToggleBtn" aria-label="Play or pause music">
+      <i class="fa-solid fa-play" id="musicIcon"></i>
+    </button>
+  </div>
+
+  <!-- ==============================================
+       HERO / WELCOME SCREEN: THE 3D WAX-SEALED ENVELOPE
+       ============================================== -->
+  <section class="envelope-hero-section" id="heroSection">
+    <div class="hero-content">
+      <div class="sparkle-badge">
+        <i class="fa-solid fa-sparkles"></i> A Special Delivery For Raie
+      </div>
+      <h1 class="hero-title">Happy 1st Anniversary, Raie!</h1>
+      <p class="hero-subtitle">One full year of love, laughter, and unforgettable moments together.</p>
+
+      <!-- 3D Interactive Envelope -->
+      <div class="envelope-wrapper" id="envelopeWrapper">
+        <div class="envelope" id="envelope">
+          <div class="envelope-front">
+            <div class="envelope-flap" id="envelopeFlap"></div>
+            <div class="envelope-pocket"></div>
+            
+            <!-- Letter Peek Inside with Real Photo -->
+            <div class="letter-peek" id="letterPeek">
+              <div class="letter-peek-img-thumb">
+                <img src="assets/images/massive-hug.jpg" alt="Our Hug">
+              </div>
+              <p class="peek-text">To My Beloved Raie...</p>
+            </div>
+
+            <!-- Wax Seal Button -->
+            <div class="wax-seal" id="waxSeal" title="Break the seal & open your letter">
+              <div class="seal-inner">
+                <span class="seal-initials">R & D</span>
+                <i class="fa-solid fa-heart seal-heart"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="open-instruction">
+        <button class="open-letter-btn" id="openLetterBtn">
+          <i class="fa-solid fa-envelope-open-text"></i> Open With Love
+        </button>
+        <span class="hint-text">✨ Tap the seal or button to open & start our song ✨</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       MAIN CONTENT CONTAINER (REVEALED AFTER OPENING)
+       ============================================== -->
+  <main class="main-content" id="mainContent">
+
+    <!-- Section 1: The Romantic Love Letter -->
+    <section class="letter-section" id="letterSection">
+      <div class="container">
+        <div class="parchment-letter">
+          <div class="letter-decor top-left">❦</div>
+          <div class="letter-decor top-right">❦</div>
+          <div class="letter-decor bottom-left">❦</div>
+          <div class="letter-decor bottom-right">❦</div>
+
+          <div class="letter-header">
+            <span class="letter-date">September 27 • 1st Anniversary</span>
+            <h2 class="letter-greeting">Dear Raie,</h2>
+            <div class="letter-headline">Happy 1st Anniversary!!! ❤️</div>
+          </div>
+
+          <div class="letter-body">
+            <p>
+              I’ve been trying to find the right words to sum up what this past year has meant to me, but honestly, 
+              "thank you" feels like the best place to start. Thank you for every shared laugh, 
+              every late-night conversation, and every quiet moment that made a regular day feel special.
+            </p>
+            <p>
+              Looking back on this year, it’s amazing how fast the time has flown, but also how natural everything 
+              has felt with you.
+            </p>
+            <p>
+              From those days when we talked on video call day and night, to that unforgettable first date where 
+              you brought me tons of gifts, gave me dozens of kisses, and held me tight in that massive hug—not to 
+              mention when we somehow got ourselves trapped, lol!
+            </p>
+            <p>
+              From our very first night out, making a complete mess of our "quality time" with condoms scattered 
+              everywhere, to all those long nights spent cuddling, holding each other...
+            </p>
+            <p>
+              From the very first moment we met to all the times you stood by me whenever I needed someone in my 
+              corner—having you by my side through it all has made everything better.
+            </p>
+            <p>
+              You bring so much warmth, brightness, and comfort into my life just by being yourself. I love the way 
+              we understand each other, how easy it is to talk to you, and how we can turn any simple moment into an 
+              incredible memory.
+            </p>
+            <p>
+              I’m so grateful for everything this first year brought us, and I’m even more excited for all the 
+              memories we have ahead of us.
+            </p>
+            <p>
+              Happy Anniversary, my love. Here’s to us and year number two! 🥂✨
+            </p>
+          </div>
+
+          <div class="letter-signature-block">
+            <span class="signature-intro">Forever yours,</span>
+            <span class="signature-name">Dhruv</span>
+            <div class="signature-seal">
+              <i class="fa-solid fa-heart"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Days Together Live Counter & Milestones -->
+    <section class="counter-section" id="counterSection">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-subtitle">OUR TIMELINE</span>
+          <h2 class="section-title">Every Second With You Counts</h2>
+          <p class="section-description">Falling more in love with you with each passing tick of the clock</p>
+        </div>
+
+        <div class="counter-grid">
+          <div class="counter-card">
+            <div class="counter-number" id="countDays">364</div>
+            <div class="counter-label">Days</div>
+          </div>
+          <div class="counter-card">
+            <div class="counter-number" id="countHours">00</div>
+            <div class="counter-label">Hours</div>
+          </div>
+          <div class="counter-card">
+            <div class="counter-number" id="countMinutes">00</div>
+            <div class="counter-label">Minutes</div>
+          </div>
+          <div class="counter-card">
+            <div class="counter-number" id="countSeconds">00</div>
+            <div class="counter-label">Seconds</div>
+          </div>
+        </div>
+
+        <!-- Milestones timeline pills -->
+        <div class="milestones-slider">
+          <div class="milestone-badge"><i class="fa-solid fa-mobile-screen"></i> Swiped Right on Bumble</div>
+          <div class="milestone-badge"><i class="fa-solid fa-video"></i> Marathon Video Calls</div>
+          <div class="milestone-badge"><i class="fa-solid fa-gift"></i> Gifts & Dozens of Kisses</div>
+          <div class="milestone-badge"><i class="fa-solid fa-lock-open"></i> Getting Trapped Together 😂</div>
+          <div class="milestone-badge"><i class="fa-solid fa-hand-holding-heart"></i> Always In My Corner</div>
+          <div class="milestone-badge"><i class="fa-solid fa-champagne-glasses"></i> Year Two & Forever</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2.5: The Bumble Swipe Easter Egg -->
+    <section class="bumble-section" id="bumbleSection">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-subtitle bumble-tag"><i class="fa-solid fa-honey-pot"></i> WHERE IT ALL BEGAN</span>
+          <h2 class="section-title">The Best Swipe of Our Lives 🐝</h2>
+          <p class="section-description">"Just two souls brought together by a simple swipe on Bumble..."</p>
+        </div>
+
+        <div class="bumble-card-wrapper">
+          <div class="bumble-card" id="bumbleCard">
+            <!-- Bumble Top Bar -->
+            <div class="bumble-header">
+              <span class="bumble-logo">🐝 bumble</span>
+              <span class="bumble-verified"><i class="fa-solid fa-circle-check"></i> Verified Match</span>
+            </div>
+
+            <!-- Profile Picture -->
+            <div class="bumble-photo-area">
+              <img src="assets/images/dhruv-bumble.jpg" alt="Dhruv" class="bumble-photo">
+              <div class="bumble-gradient-overlay">
+                <div class="bumble-profile-title">
+                  <h3>Dhruv <span>20</span></h3>
+                  <i class="fa-solid fa-circle-check verified-icon"></i>
+                </div>
+                <p class="bumble-location"><i class="fa-solid fa-location-dot"></i> 0 miles away • In your heart forever</p>
+              </div>
+            </div>
+
+            <!-- Profile Questions & Bio -->
+            <div class="bumble-bio-area">
+              <div class="bumble-prompt">
+                <span class="prompt-title">A fun fact about me...</span>
+                <p class="prompt-text">"I'll talk to you on video calls all night, get trapped on our first date, and fall more in love with you every single day."</p>
+              </div>
+
+              <div class="bumble-prompt">
+                <span class="prompt-title">What I'm looking for...</span>
+                <p class="prompt-text">"A girl named Raie to give me dozens of kisses, massive hugs, and a lifetime of happiness. ❤️"</p>
+              </div>
+            </div>
+
+            <!-- Interactive Swipe Buttons -->
+            <div class="bumble-buttons-bar">
+              <button class="b-btn b-pass" id="bumblePassBtn" title="Pass? You know you can't 😉">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+              <button class="b-btn b-star" id="bumbleStarBtn" title="SuperSwipe!">
+                <i class="fa-solid fa-star"></i>
+              </button>
+              <button class="b-btn b-heart" id="bumbleLikeBtn" title="Swipe Right on Dhruv!">
+                <i class="fa-solid fa-heart"></i>
+              </button>
+            </div>
+
+            <div class="bumble-swipe-hint">
+              <span id="passTeaseMsg">👉 Tap the Heart or Star to Swipe Right! 💛</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Interactive Polaroid Memory Gallery with REAL Photos -->
+    <section class="gallery-section" id="gallerySection">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-subtitle">SNAPSHOTS OF OUR FIRST YEAR</span>
+          <h2 class="section-title">Our Favorite Memories</h2>
+          <p class="section-description">Click on any polaroid to take a closer look, zoom in, and relive the moment ✨</p>
+        </div>
+
+        <div class="gallery-grid" id="galleryGrid">
+          
+          <!-- Polaroid 1: That Massive Hug -->
+          <div class="polaroid-card tilt-left" data-index="0" data-caption="That Massive Hug 🫂" data-story="You brought me tons of gifts, gave me dozens of kisses, and held me tight in that massive hug... I never wanted to let go.">
+            <div class="tape-strip"></div>
+            <div class="polaroid-image-frame">
+              <img src="assets/images/massive-hug.jpg" alt="Our Massive Hug" class="polaroid-img" loading="lazy">
+            </div>
+            <div class="polaroid-caption">
+              <span class="caption-text">That Massive Hug 🫂</span>
+              <span class="caption-date">First Date Magic</span>
+            </div>
+          </div>
+
+          <!-- Polaroid 2: First Date Kisses -->
+          <div class="polaroid-card tilt-right" data-index="1" data-caption="First Date Kisses 💋" data-story="Sitting together on the grass in the park, laughing and sharing sweet kisses that made time stand still.">
+            <div class="tape-strip"></div>
+            <div class="polaroid-image-frame">
+              <img src="assets/images/first-date-kiss.jpg" alt="First Date Kiss" class="polaroid-img" loading="lazy">
+            </div>
+            <div class="polaroid-caption">
+              <span class="caption-text">Dozens of Kisses 💋</span>
+              <span class="caption-date">Park Picnic Day</span>
+            </div>
+          </div>
+
+          <!-- Polaroid 3: Video Call Marathon -->
+          <div class="polaroid-card tilt-center" data-index="2" data-caption="Video Call Marathons 📱" data-story="Talking day and night across the screen, not wanting to hang up for even a second. Our smile said it all!">
+            <div class="tape-strip"></div>
+            <div class="polaroid-image-frame">
+              <img src="assets/images/videocall.jpg" alt="Video Call" class="polaroid-img" loading="lazy">
+            </div>
+            <div class="polaroid-caption">
+              <span class="caption-text">Endless Video Calls 📱</span>
+              <span class="caption-date">All Day & Night</span>
+            </div>
+          </div>
+
+          <!-- Polaroid 4: Cuddling in Bed -->
+          <div class="polaroid-card tilt-left" data-index="3" data-caption="Late Night Cuddles 🧸" data-story="All those long nights spent cuddling, holding each other, and forgetting the rest of the world exists. My favorite place is in your arms.">
+            <div class="tape-strip"></div>
+            <div class="polaroid-image-frame">
+              <img src="assets/images/cuddle-bed.jpg?v=2" alt="Bed Cuddles" class="polaroid-img" loading="lazy">
+            </div>
+            <div class="polaroid-caption">
+              <span class="caption-text">Cozy Nights & Cuddles 🫂</span>
+              <span class="caption-date">My Safest Comfort</span>
+            </div>
+          </div>
+
+          <!-- Polaroid 5: Cheek Kiss Squish -->
+          <div class="polaroid-card tilt-right" data-index="4" data-caption="My Favorite Kiss 💋" data-story="The way you squish my cheeks, pull me close, and shower me with love. You make me the happiest guy in the world.">
+            <div class="tape-strip"></div>
+            <div class="polaroid-image-frame">
+              <img src="assets/images/cheek-kiss.jpg" alt="Cheek Kiss" class="polaroid-img" loading="lazy">
+            </div>
+            <div class="polaroid-caption">
+              <span class="caption-text">Cheek Kisses & Smiles 💖</span>
+              <span class="caption-date">Silly & In Love</span>
+            </div>
+          </div>
+
+          <!-- Polaroid 6: Auto-Rickshaw Adventures -->
+          <div class="polaroid-card tilt-center" data-index="5" data-caption="Auto Ride Adventures 🛺" data-story="Cruising through the city together with my arm around you. Every simple commute with you feels like an exciting adventure!">
+            <div class="tape-strip"></div>
+            <div class="polaroid-image-frame">
+              <img src="assets/images/auto-ride.jpg" alt="Auto Ride" class="polaroid-img" loading="lazy">
+            </div>
+            <div class="polaroid-caption">
+              <span class="caption-text">Auto Ride Adventures 🛺</span>
+              <span class="caption-date">Cruising Together</span>
+            </div>
+          </div>
+
+          <!-- Polaroid 7: Auto Cheek Kiss -->
+          <div class="polaroid-card tilt-left" data-index="6" data-caption="Stolen Kisses 🛺✨" data-story="Sneaking kisses while the auto-rickshaw bounces around and the world rushes past us. Pure romance!">
+            <div class="tape-strip"></div>
+            <div class="polaroid-image-frame">
+              <img src="assets/images/auto-cheek-kiss.jpg" alt="Auto Cheek Kiss" class="polaroid-img" loading="lazy">
+            </div>
+            <div class="polaroid-caption">
+              <span class="caption-text">Stolen Kisses 💋✨</span>
+              <span class="caption-date">Just You & Me</span>
+            </div>
+          </div>
+
+          <!-- Polaroid 8: Raie's Burnt-Edge Letter -->
+          <div class="polaroid-card tilt-right" data-index="7" data-caption="Your Letter To Me 📜✨" data-story="Your beautiful burnt-edge handwritten letter with the glowing crystal sphere and Batman token: 'Just two souls brought together by a simple swipe on Bumble... I love you tons, Raie'. I cherish this with all my heart!">
+            <div class="tape-strip"></div>
+            <div class="polaroid-image-frame">
+              <img src="assets/images/raie-letter.jpg" alt="Raie's Letter" class="polaroid-img" loading="lazy">
+            </div>
+            <div class="polaroid-caption">
+              <span class="caption-text">Your Letter To Me 📜✨</span>
+              <span class="caption-date">Bumble to Forever</span>
+            </div>
+          </div>
+
+          <!-- Polaroid 9: Sunny Garden Selfie -->
+          <div class="polaroid-card tilt-center" data-index="8" data-caption="Sunny Park Days 🌿" data-story="Walking through the green gardens, both of us wearing sunglasses and smiling ear to ear. Sunshine has nothing on your brightness!">
+            <div class="tape-strip"></div>
+            <div class="polaroid-image-frame">
+              <img src="assets/images/sunny-garden.jpg" alt="Sunny Garden" class="polaroid-img" loading="lazy">
+            </div>
+            <div class="polaroid-caption">
+              <span class="caption-text">Sun-kissed Smiles ☀️</span>
+              <span class="caption-date">Garden Day Walk</span>
+            </div>
+          </div>
+
+          <!-- Polaroid 10: Mall Date Shenanigans -->
+          <div class="polaroid-card tilt-left" data-index="9" data-caption="Mall Date Shenanigans 🛍️" data-story="Sitting together taking mirror photos, laughing at goofy outfits, and turning a simple shopping trip into our happy memory.">
+            <div class="tape-strip"></div>
+            <div class="polaroid-image-frame">
+              <img src="assets/images/mall-date.jpg" alt="Mall Date" class="polaroid-img" loading="lazy">
+            </div>
+            <div class="polaroid-caption">
+              <span class="caption-text">Mall Date & Smiles 🛍️</span>
+              <span class="caption-date">Everyday Magic</span>
+            </div>
+          </div>
+
+          <!-- Polaroid 11: Standing In My Corner -->
+          <div class="polaroid-card tilt-right" data-index="10" data-caption="Always In My Corner 🌟" data-story="From the very first moment we met to all the times you stood by me whenever I needed someone in my corner—having you makes everything better.">
+            <div class="tape-strip"></div>
+            <div class="polaroid-image-frame">
+              <img src="assets/images/holding-each-other.jpg" alt="Standing Together" class="polaroid-img" loading="lazy">
+            </div>
+            <div class="polaroid-caption">
+              <span class="caption-text">Always In My Corner 🌟</span>
+              <span class="caption-date">My Person Always</span>
+            </div>
+          </div>
+
+          <!-- Polaroid 12: Raie's Pout & Hug -->
+          <div class="polaroid-card tilt-center" data-index="11" data-caption="Your Cutest Pout 🥰" data-story="Arms wrapped around my neck, giving your iconic cute pout. No one makes my heart skip a beat like you do!">
+            <div class="tape-strip"></div>
+            <div class="polaroid-image-frame">
+              <img src="assets/images/raie-pout-hug.jpg" alt="Raie Pout Hug" class="polaroid-img" loading="lazy">
+            </div>
+            <div class="polaroid-caption">
+              <span class="caption-text">Your Cutest Pout 🥰</span>
+              <span class="caption-date">Arms Around My Neck</span>
+            </div>
+          </div>
+
+          <!-- Polaroid 13: Gorgeous Raie by the Lake -->
+          <div class="polaroid-card tilt-left" data-index="12" data-caption="My Gorgeous Girl 🌸" data-story="Look at how stunning you are! Sitting by the waterfront in your floral dress, looking like pure art.">
+            <div class="tape-strip"></div>
+            <div class="polaroid-image-frame">
+              <img src="assets/images/raie-by-lake.jpg" alt="Raie by the Lake" class="polaroid-img" loading="lazy">
+            </div>
+            <div class="polaroid-caption">
+              <span class="caption-text">My Gorgeous Girl 🌸</span>
+              <span class="caption-date">Pure Elegance</span>
+            </div>
+          </div>
+
+          <!-- Polaroid 14: Resting on Shoulder -->
+          <div class="polaroid-card tilt-right" data-index="13" data-caption="Resting on My Shoulder 🤍" data-story="Whenever you lean your head on my shoulder, everything feels right in the world. Here's to a lifetime more of these moments.">
+            <div class="tape-strip"></div>
+            <div class="polaroid-image-frame">
+              <img src="assets/images/resting-shoulder.jpg" alt="Resting on Shoulder" class="polaroid-img" loading="lazy">
+            </div>
+            <div class="polaroid-caption">
+              <span class="caption-text">Pure Peace 🤍</span>
+              <span class="caption-date">Home With You</span>
+            </div>
+          </div>
+
+          <!-- Polaroid 15: Lovers Rock Night -->
+          <div class="polaroid-card tilt-left" data-index="14" data-caption="Lovers Rock Vibes 🌙✨" data-story="Holding each other close in the dim lights, listening to our favorite tunes, and feeling completely at peace with you.">
+            <div class="tape-strip"></div>
+            <div class="polaroid-image-frame">
+              <img src="assets/images/lovers-rock-night.png" alt="Lovers Rock Night" class="polaroid-img" loading="lazy">
+            </div>
+            <div class="polaroid-caption">
+              <span class="caption-text">Lovers Rock 🌙✨</span>
+              <span class="caption-date">Cozy Late Night</span>
+            </div>
+          </div>
+
+          <!-- Polaroid 16: B&W Mirror Hug -->
+          <div class="polaroid-card tilt-center" data-index="15" data-caption="Wrapped In Your Arms 🖤" data-story="You wrapping your arms tight around my waist, smiling into the mirror... turning simple quiet moments into forever memories.">
+            <div class="tape-strip"></div>
+            <div class="polaroid-image-frame">
+              <img src="assets/images/bw-mirror-hug.png" alt="Mirror Hug" class="polaroid-img" loading="lazy">
+            </div>
+            <div class="polaroid-caption">
+              <span class="caption-text">Arms Around My Waist 🖤</span>
+              <span class="caption-date">Midnight Moments</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 4: Interactive Flip Cards: Little Things I Love About You -->
+    <section class="reasons-section">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-subtitle">THE SWEETEST TRUTHS</span>
+          <h2 class="section-title">Why You're So Special To Me</h2>
+          <p class="section-description">Hover or tap on each card to reveal what I cherish most about you ❤️</p>
+        </div>
+
+        <div class="reasons-grid">
+          
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="card-icon"><i class="fa-solid fa-sun"></i></div>
+                <h3>Your Warmth</h3>
+                <p class="flip-hint">Tap to flip ↺</p>
+              </div>
+              <div class="flip-card-back">
+                <i class="fa-solid fa-quote-left quote-icon"></i>
+                <p>You bring so much warmth, brightness, and comfort into my life just by being yourself.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="card-icon"><i class="fa-solid fa-comments"></i></div>
+                <h3>Our Conversations</h3>
+                <p class="flip-hint">Tap to flip ↺</p>
+              </div>
+              <div class="flip-card-back">
+                <i class="fa-solid fa-quote-left quote-icon"></i>
+                <p>I love how easy it is to talk to you, from our deep 3 AM talks to laughing over silly moments.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="card-icon"><i class="fa-solid fa-shield-heart"></i></div>
+                <h3>Standing By Me</h3>
+                <p class="flip-hint">Tap to flip ↺</p>
+              </div>
+              <div class="flip-card-back">
+                <i class="fa-solid fa-quote-left quote-icon"></i>
+                <p>Whenever I needed someone in my corner, you were there. Having you by my side makes everything better.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="card-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                <h3>Making Days Special</h3>
+                <p class="flip-hint">Tap to flip ↺</p>
+              </div>
+              <div class="flip-card-back">
+                <i class="fa-solid fa-quote-left quote-icon"></i>
+                <p>We turn any simple moment into an incredible memory. Being with you makes ordinary feel extraordinary.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Grand Celebration & Surprise Finale -->
+    <section class="finale-section">
+      <div class="container finale-container">
+        <div class="finale-heart-icon">
+          <i class="fa-solid fa-heart-pulse"></i>
+        </div>
+        <h2 class="finale-title">Here’s to Us & Year Number Two!</h2>
+        <p class="finale-text">
+          Thank you for an incredible 365 days, Raie. Every single memory is etched in my heart forever.
+        </p>
+
+        <button class="surprise-btn" id="surpriseBtn">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> Click For A Special Surprise! 💖
+        </button>
+
+        <div class="forever-yours">
+          <span>Forever yours,</span>
+          <h3>Dhruv</h3>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==============================================
+       INTERACTIVE LIGHTBOX MODAL (FOR POLAROID ZOOM)
+       ============================================== -->
+  <div class="lightbox-modal" id="lightboxModal" aria-hidden="true">
+    <div class="lightbox-overlay" id="lightboxOverlay"></div>
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Close photo view">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      
+      <div class="lightbox-media-wrapper">
+        <img src="" alt="Enlarged Memory" id="lightboxImg" class="lightbox-img">
+      </div>
+
+      <div class="lightbox-details">
+        <h3 id="lightboxCaption">Our Memory</h3>
+        <p id="lightboxStory">Story description</p>
+      </div>
+
+      <!-- Navigation Arrows -->
+      <button class="lightbox-nav prev-btn" id="lightboxPrev" aria-label="Previous photo">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button class="lightbox-nav next-btn" id="lightboxNext" aria-label="Next photo">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Surprise Celebration Pop-up Modal -->
+  <div class="celebration-modal" id="celebrationModal">
+    <div class="celebration-overlay" id="celebrationOverlay"></div>
+    <div class="celebration-box">
+      <button class="celebration-close" id="celebrationClose"><i class="fa-solid fa-xmark"></i></button>
+      <div class="celebration-sparkles">✨ 💖 ✨</div>
+      <h2>Happy 1st Anniversary, Raie!</h2>
+      <p class="celebration-message">
+        You are my favorite person, my greatest adventure, and my happiest comfort.<br><br>
+        <strong>I love you more than words can say.</strong><br>
+        Cheers to a lifetime of hugs, kisses, laughs, and getting trapped together! 🥂❤️
+      </p>
+      <div class="celebration-sign">- Dhruv ❤️</div>
+      <button class="celebration-btn" id="celebrationBtn">I Love You Too! 💖</button>
+    </div>
+  </div>
+
+  <!-- Bumble Match Modal Popup -->
+  <div class="bumble-modal" id="bumbleModal">
+    <div class="bumble-modal-overlay" id="bumbleModalOverlay"></div>
+    <div class="bumble-modal-card">
+      <button class="bumble-modal-close" id="bumbleModalClose"><i class="fa-solid fa-xmark"></i></button>
+      <div class="bumble-match-header">
+        <div class="bumble-bee-badge">🐝 BUMBLE MATCH</div>
+        <h2 class="match-title">IT'S A MATCH!</h2>
+        <p class="match-subtitle">You and Dhruv liked each other 365 days ago.</p>
+      </div>
+
+      <div class="bumble-matched-avatars">
+        <div class="matched-circle left-circle">
+          <img src="assets/images/raie-by-lake.jpg" alt="Raie">
+          <span class="circle-name">Raie</span>
+        </div>
+        <div class="matched-heart-icon">
+          <i class="fa-solid fa-heart"></i>
+        </div>
+        <div class="matched-circle right-circle">
+          <img src="assets/images/dhruv-bumble.jpg" alt="Dhruv">
+          <span class="circle-name">Dhruv</span>
+        </div>
+      </div>
+
+      <div class="match-dialogue">
+        <p>Best right swipe in history! One little tap on Bumble led to a full year of late-night calls, park hugs, getting trapped together, and endless love. ❤️</p>
+      </div>
+
+      <div class="match-buttons">
+        <button class="bumble-keep-swiping-btn" id="bumbleKeepSwipingBtn">
+          <i class="fa-solid fa-camera-retro"></i> Relive Our 365 Days of Memories ✨
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>
