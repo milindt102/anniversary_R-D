@@ -431,7 +431,73 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ------------------------------------------------------------
-  // 8. HIGH-PERFORMANCE FLOATING HEARTS & PARTICLES CANVAS
+  // 7.8. 365 ROSES FOR RAIE INTERACTION
+  // ------------------------------------------------------------
+  const pickRoseBtn = document.getElementById('pickRoseBtn');
+  const showerRosesBtn = document.getElementById('showerRosesBtn');
+  const roseFlowerBtn = document.getElementById('roseFlowerBtn');
+  const roseCounter = document.getElementById('roseCounter');
+  const roseMessageBox = document.getElementById('roseMessageBox');
+  const roseMessageText = document.getElementById('roseMessageText');
+
+  const roseMessages = [
+    "To the most beautiful girl in the universe: every rose in the world wouldn't be enough to show how much you mean to me. Happy 1st Anniversary, my Raie! ❤️",
+    "A deep red rose for your radiant smile that lights up my whole world every single day. 🌹",
+    "A velvet rose for that unforgettable first date and that massive, tight hug I never wanted to end. 🫂🌹",
+    "A sweet rose for all our marathon video calls day and night when we never wanted to say goodbye. 📱🌹",
+    "A playful rose for getting trapped together and laughing our way through it! 😂🌹",
+    "A cozy rose for all those quiet, warm nights spent cuddling and holding each other close. 🧸🌹",
+    "A midnight rose for vibing to Lovers Rock with you in the dim lights. 🌙🌹",
+    "A golden rose for that fateful right swipe on Bumble that changed my entire life forever. 🐝🌹",
+    "A tender rose for always standing by my side in my corner whenever I needed you most. 🌟🌹",
+    "A passionate rose for all the dozens of sweet kisses and cheeky cheek squishes. 💋🌹",
+    "A forever rose for 365 days of loving you... and a lifetime more to come. Cheers to Year Two! 🥂🌹"
+  ];
+
+  let currentRoseIdx = 0;
+
+  function pickNewRose() {
+    currentRoseIdx++;
+    const roseNum = (currentRoseIdx % 365) + 1;
+    if (roseCounter) roseCounter.textContent = roseNum;
+
+    // Animate flower bounce
+    if (roseFlowerBtn) {
+      roseFlowerBtn.style.transform = 'scale(1.25) rotate(15deg)';
+      setTimeout(() => { roseFlowerBtn.style.transform = ''; }, 350);
+    }
+
+    // Fade message
+    if (roseMessageBox && roseMessageText) {
+      roseMessageBox.style.opacity = '0';
+      roseMessageBox.style.transform = 'translateY(8px)';
+      setTimeout(() => {
+        roseMessageText.textContent = roseMessages[currentRoseIdx % roseMessages.length];
+        roseMessageBox.style.opacity = '1';
+        roseMessageBox.style.transform = 'translateY(0)';
+      }, 250);
+    }
+
+    // Small burst of rose petals
+    triggerRoseBurst(window.innerWidth / 2, window.innerHeight * 0.65, 20);
+  }
+
+  if (pickRoseBtn) pickRoseBtn.addEventListener('click', pickNewRose);
+  if (roseFlowerBtn) roseFlowerBtn.addEventListener('click', pickNewRose);
+
+  if (showerRosesBtn) {
+    showerRosesBtn.addEventListener('click', () => {
+      for (let i = 0; i < 6; i++) {
+        setTimeout(() => {
+          const rx = window.innerWidth * (0.1 + Math.random() * 0.8);
+          triggerRoseBurst(rx, window.innerHeight * (0.2 + Math.random() * 0.4), 25);
+        }, i * 180);
+      }
+    });
+  }
+
+  // ------------------------------------------------------------
+  // 8. HIGH-PERFORMANCE FLOATING HEARTS & ROSE PETALS CANVAS
   // ------------------------------------------------------------
   const canvas = document.getElementById('particles-canvas');
   const ctx = canvas.getContext('2d');
@@ -445,6 +511,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const particles = [];
   const burstParticles = [];
+  const rosePetals = [];
+  
   const colors = [
     'rgba(216, 27, 96, ',   // Rose Pink
     'rgba(240, 98, 146, ',  // Light Rose
@@ -453,10 +521,66 @@ document.addEventListener('DOMContentLoaded', () => {
     'rgba(255, 64, 129, '   // Bright Pink
   ];
 
-  class AmbientParticle {
+  const roseColors = [
+    'rgba(225, 29, 72, ',   // Red Rose
+    'rgba(190, 18, 60, ',   // Deep Crimson
+    'rgba(159, 18, 57, ',   // Velvet Rose
+    'rgba(244, 63, 94, ',   // Rose 500
+    'rgba(136, 14, 79, '    // Wine Rose
+  ];
+
+  class FallingRosePetal {
     constructor() {
       this.reset();
       this.y = Math.random() * height; // initial spread
+    }
+
+    reset() {
+      this.x = Math.random() * width;
+      this.y = -35;
+      this.size = Math.random() * 12 + 10;
+      this.speedY = Math.random() * 0.9 + 0.7;
+      this.swaySpeed = Math.random() * 0.03 + 0.02;
+      this.swayAngle = Math.random() * Math.PI * 2;
+      this.rotX = Math.random() * Math.PI;
+      this.rotY = Math.random() * Math.PI;
+      this.rotSpeedX = (Math.random() - 0.5) * 0.03;
+      this.rotSpeedY = (Math.random() - 0.5) * 0.03;
+      this.color = roseColors[Math.floor(Math.random() * roseColors.length)];
+      this.alpha = Math.random() * 0.45 + 0.35;
+    }
+
+    update() {
+      this.y += this.speedY;
+      this.swayAngle += this.swaySpeed;
+      this.x += Math.sin(this.swayAngle) * 1.3;
+      this.rotX += this.rotSpeedX;
+      this.rotY += this.rotSpeedY;
+
+      if (this.y > height + 40 || this.x < -40 || this.x > width + 40) {
+        this.reset();
+      }
+    }
+
+    draw() {
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.scale(Math.cos(this.rotX), Math.sin(this.rotY));
+      ctx.fillStyle = this.color + this.alpha + ')';
+      ctx.beginPath();
+      ctx.moveTo(0, -this.size);
+      ctx.bezierCurveTo(this.size * 0.9, -this.size * 0.5, this.size * 0.9, this.size * 0.5, 0, this.size);
+      ctx.bezierCurveTo(-this.size * 0.9, this.size * 0.5, -this.size * 0.9, -this.size * 0.5, 0, -this.size);
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+    }
+  }
+
+  class AmbientParticle {
+    constructor() {
+      this.reset();
+      this.y = Math.random() * height;
     }
 
     reset() {
@@ -468,7 +592,6 @@ document.addEventListener('DOMContentLoaded', () => {
       this.baseColor = colors[Math.floor(Math.random() * colors.length)];
       this.alpha = Math.random() * 0.45 + 0.15;
       this.angle = Math.random() * Math.PI * 2;
-      this.rotationSpeed = (Math.random() - 0.5) * 0.02;
       this.type = Math.random() > 0.35 ? 'heart' : 'sparkle';
     }
 
@@ -498,9 +621,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   class BurstParticle {
-    constructor(x, y) {
+    constructor(x, y, isRose = false) {
       this.x = x;
       this.y = y;
+      this.isRose = isRose;
       const angle = Math.random() * Math.PI * 2;
       const speed = Math.random() * 7 + 2;
       this.vx = Math.cos(angle) * speed;
@@ -508,7 +632,8 @@ document.addEventListener('DOMContentLoaded', () => {
       this.gravity = 0.18;
       this.friction = 0.96;
       this.size = Math.random() * 14 + 10;
-      this.baseColor = colors[Math.floor(Math.random() * colors.length)];
+      const palette = isRose ? roseColors : colors;
+      this.baseColor = palette[Math.floor(Math.random() * palette.length)];
       this.alpha = 1;
       this.decay = Math.random() * 0.015 + 0.012;
       this.rotation = Math.random() * Math.PI * 2;
@@ -530,7 +655,17 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.save();
       ctx.translate(this.x, this.y);
       ctx.rotate(this.rotation);
-      drawHeart(ctx, 0, 0, this.size, this.baseColor + this.alpha + ')');
+      if (this.isRose) {
+        ctx.fillStyle = this.baseColor + this.alpha + ')';
+        ctx.beginPath();
+        ctx.moveTo(0, -this.size);
+        ctx.bezierCurveTo(this.size * 0.9, -this.size * 0.5, this.size * 0.9, this.size * 0.5, 0, this.size);
+        ctx.bezierCurveTo(-this.size * 0.9, this.size * 0.5, -this.size * 0.9, -this.size * 0.5, 0, -this.size);
+        ctx.closePath();
+        ctx.fill();
+      } else {
+        drawHeart(ctx, 0, 0, this.size, this.baseColor + this.alpha + ')');
+      }
       ctx.restore();
     }
   }
@@ -540,13 +675,9 @@ document.addEventListener('DOMContentLoaded', () => {
     c.beginPath();
     const topCurveHeight = size * 0.3;
     c.moveTo(x, y + topCurveHeight);
-    // top left curve
     c.bezierCurveTo(x, y, x - size / 2, y, x - size / 2, y + topCurveHeight);
-    // bottom left curve
     c.bezierCurveTo(x - size / 2, y + (size + topCurveHeight) / 2, x, y + (size + topCurveHeight) / 2, x, y + size);
-    // bottom right curve
     c.bezierCurveTo(x, y + (size + topCurveHeight) / 2, x + size / 2, y + (size + topCurveHeight) / 2, x + size / 2, y + topCurveHeight);
-    // top right curve
     c.bezierCurveTo(x + size / 2, y, x, y, x, y + topCurveHeight);
     c.closePath();
     c.fill();
@@ -567,26 +698,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function triggerHeartBurst(x, y, count = 25) {
     for (let i = 0; i < count; i++) {
-      burstParticles.push(new BurstParticle(x, y));
+      burstParticles.push(new BurstParticle(x, y, false));
     }
   }
 
-  // Populate ambient floating particles
-  const particleCount = Math.min(35, Math.floor(window.innerWidth / 35));
+  function triggerRoseBurst(x, y, count = 20) {
+    for (let i = 0; i < count; i++) {
+      burstParticles.push(new BurstParticle(x, y, true));
+    }
+  }
+
+  // Populate ambient particles: hearts, sparkles & falling velvet rose petals!
+  const particleCount = Math.min(25, Math.floor(window.innerWidth / 45));
   for (let i = 0; i < particleCount; i++) {
     particles.push(new AmbientParticle());
+  }
+
+  const rosePetalCount = Math.min(18, Math.floor(window.innerWidth / 65));
+  for (let i = 0; i < rosePetalCount; i++) {
+    rosePetals.push(new FallingRosePetal());
   }
 
   function animateCanvas() {
     ctx.clearRect(0, 0, width, height);
 
-    // Draw ambient floating hearts
+    // Draw ambient floating hearts & sparkles
     for (let i = 0; i < particles.length; i++) {
       particles[i].update();
       particles[i].draw();
     }
 
-    // Draw burst explosion particles
+    // Draw falling velvet rose petals
+    for (let i = 0; i < rosePetals.length; i++) {
+      rosePetals[i].update();
+      rosePetals[i].draw();
+    }
+
+    // Draw burst explosion particles (hearts & rose petals)
     for (let i = burstParticles.length - 1; i >= 0; i--) {
       burstParticles[i].update();
       burstParticles[i].draw();
